@@ -1,55 +1,146 @@
 
 import { useEffect, useRef } from 'react';
-import { ArrowDown, ArrowUpRight, Droplets } from 'lucide-react';
+import { motion, useReducedMotion } from 'motion/react';
+import {
+    ArrowDown,
+    ArrowUpRight,
+    Droplets,
+} from 'lucide-react';
+
 import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+gsap.registerPlugin(ScrollTrigger);
 
 export default function Hero() {
     const heroRef = useRef(null);
+    const shouldReduceMotion = useReducedMotion();
 
     useEffect(() => {
         const ctx = gsap.context(() => {
-            const tl = gsap.timeline({ defaults: { ease: 'power3.out' } });
+            const mm = gsap.matchMedia();
 
-            tl.from('.hero-eyebrow', {
-                y: 25,
-                opacity: 0,
-                duration: 0.8,
-            })
-                .from('.hero-title', {
-                    y: 65,
-                    opacity: 0,
-                    duration: 1.1,
-                }, '-=0.4')
-                .from('.hero-description', {
-                    y: 25,
-                    opacity: 0,
-                    duration: 0.8,
-                }, '-=0.6')
-                .from('.hero-actions', {
-                    y: 25,
-                    opacity: 0,
-                    duration: 0.8,
-                }, '-=0.5')
-                .from('.hero-bottom', {
-                    opacity: 0,
-                    y: 20,
-                    duration: 0.8,
-                }, '-=0.3');
+            mm.add(
+                {
+                    isMobile: '(max-width: 768px)',
+                    reduceMotion: '(prefers-reduced-motion: reduce)',
+                },
+                (context) => {
+                    const { isMobile, reduceMotion } = context.conditions;
 
-            gsap.to('.hero-scroll-icon', {
-                y: 8,
-                repeat: -1,
-                yoyo: true,
-                duration: 1,
-                ease: 'power1.inOut',
-            });
+                    // Respect reduced motion preferences
+                    if (reduceMotion) {
+                        gsap.set(
+                            [
+                                '.hero-eyebrow',
+                                '.hero-title',
+                                '.hero-description',
+                                '.hero-actions',
+                                '.hero-bottom',
+                            ],
+                            { clearProps: 'all' }
+                        );
+
+                        return;
+                    }
+
+                    const distance = isMobile ? 20 : 45;
+                    const duration = isMobile ? 0.6 : 0.85;
+
+                    // HERO CONTENT ENTRANCE
+                    const tl = gsap.timeline({
+                        defaults: {
+                            ease: 'power3.out',
+                        },
+                    });
+
+                    tl.from('.hero-eyebrow', {
+                        y: distance,
+                        opacity: 0,
+                        duration,
+                    })
+                        .from(
+                            '.hero-title',
+                            {
+                                y: distance + 15,
+                                opacity: 0,
+                                duration: duration + 0.2,
+                            },
+                            '-=0.35'
+                        )
+                        .from(
+                            '.hero-description',
+                            {
+                                y: distance,
+                                opacity: 0,
+                                duration,
+                            },
+                            '-=0.4'
+                        )
+                        .from(
+                            '.hero-actions',
+                            {
+                                y: distance,
+                                opacity: 0,
+                                duration,
+                            },
+                            '-=0.4'
+                        )
+                        .from(
+                            '.hero-bottom',
+                            {
+                                y: 15,
+                                opacity: 0,
+                                duration,
+                            },
+                            '-=0.3'
+                        );
+
+                    // BACKGROUND PARALLAX
+                    if (!isMobile) {
+                        gsap.to('.hero-background', {
+                            yPercent: 12,
+                            ease: 'none',
+                            scrollTrigger: {
+                                trigger: '.hero-section',
+                                start: 'top top',
+                                end: 'bottom top',
+                                scrub: 1,
+                            },
+                        });
+                    }
+
+                    // SCROLL INDICATOR
+                    if (!isMobile) {
+                        gsap.to('.hero-scroll-icon', {
+                            y: 8,
+                            repeat: -1,
+                            yoyo: true,
+                            duration: 1,
+                            ease: 'power1.inOut',
+                        });
+                    }
+                }
+            );
+
+            return () => mm.revert();
+
         }, heroRef);
 
         return () => ctx.revert();
+
     }, []);
 
+    const buttonTransition = shouldReduceMotion
+        ? { duration: 0 }
+        : { duration: 0.3, ease: 'easeOut' };
+
     return (
-        <section className="hero-section" id="home" ref={heroRef}>
+        <section
+            className="hero-section"
+            id="home"
+            ref={heroRef}
+        >
 
             <div className="hero-background"></div>
             <div className="hero-overlay"></div>
@@ -75,14 +166,44 @@ export default function Hero() {
                 </p>
 
                 <div className="hero-actions">
-                    <a href="#about" className="primary-btn">
+
+                    <motion.a
+                        href="#about"
+                        className="primary-btn"
+                        whileHover={
+                            shouldReduceMotion
+                                ? {}
+                                : { y: -4, scale: 1.03 }
+                        }
+                        whileTap={
+                            shouldReduceMotion
+                                ? {}
+                                : { scale: 0.97 }
+                        }
+                        transition={buttonTransition}
+                    >
                         Discover Our Mission
                         <ArrowUpRight size={19} />
-                    </a>
+                    </motion.a>
 
-                    <a href="#work" className="secondary-btn">
+                    <motion.a
+                        href="#work"
+                        className="secondary-btn"
+                        whileHover={
+                            shouldReduceMotion
+                                ? {}
+                                : { y: -4, scale: 1.03 }
+                        }
+                        whileTap={
+                            shouldReduceMotion
+                                ? {}
+                                : { scale: 0.97 }
+                        }
+                        transition={buttonTransition}
+                    >
                         Explore Our Work
-                    </a>
+                    </motion.a>
+
                 </div>
 
             </div>
@@ -94,9 +215,15 @@ export default function Hero() {
                     <span>ISLAMABAD, PAKISTAN</span>
                 </div>
 
-                <a href="#about" className="scroll-indicator">
+                <a
+                    href="#about"
+                    className="scroll-indicator"
+                >
                     <span>SCROLL TO EXPLORE</span>
-                    <ArrowDown className="hero-scroll-icon" size={18} />
+                    <ArrowDown
+                        className="hero-scroll-icon"
+                        size={18}
+                    />
                 </a>
 
                 <div className="hero-tagline">

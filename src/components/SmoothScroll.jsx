@@ -1,34 +1,47 @@
 
-import { useEffect, useRef } from 'react';
-import { ReactLenis } from 'lenis/react';
-import { frame, cancelFrame } from 'motion/react';
+import { useEffect } from 'react';
+import { ReactLenis, useLenis } from 'lenis/react';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import gsap from 'gsap';
 import 'lenis/dist/lenis.css';
 
-export default function SmoothScroll({ children }) {
-    const lenisRef = useRef(null);
+gsap.registerPlugin(ScrollTrigger);
+
+function ScrollTriggerSync() {
+    const lenis = useLenis();
 
     useEffect(() => {
-        function update({ timestamp }) {
-            lenisRef.current?.lenis?.raf(timestamp);
-        }
+        if (!lenis) return;
 
-        frame.setup(update, true);
+        const handleScroll = () => {
+            ScrollTrigger.update();
+        };
+
+        lenis.on('scroll', handleScroll);
+
+        // Recalculate trigger positions after the page is ready.
+        ScrollTrigger.refresh();
 
         return () => {
-            cancelFrame(update);
+            lenis.off('scroll', handleScroll);
         };
-    }, []);
+    }, [lenis]);
 
+    return null;
+}
+
+export default function SmoothScroll({ children }) {
     return (
         <ReactLenis
             root
             options={{
-                autoRaf: false,
-                duration: 1.2,
+                autoRaf: true,
                 smoothWheel: true,
+                syncTouch: false,
+                lerp: 0.1,
             }}
-            ref={lenisRef}
         >
+            <ScrollTriggerSync />
             {children}
         </ReactLenis>
     );

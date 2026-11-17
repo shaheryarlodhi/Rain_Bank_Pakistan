@@ -544,6 +544,7 @@
   background-size: cover;
   background-position: center;
   transform: scale(1.02);
+  will-change: transform;
 }
 
 .hero-overlay {
@@ -885,6 +886,7 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
+  will-change: transform;
 }
 
 .about-image-label {
@@ -904,6 +906,7 @@
   display: flex;
   flex-direction: column;
   gap: 5px;
+  will-change: transform, opacity;
 }
 
 .about-image-label strong {
@@ -2328,6 +2331,7 @@
   }
 }
 
+
 @media (max-width: 650px) {
 
   .team-section,
@@ -2631,4 +2635,496 @@
   .contact-info-list {
     margin-top: 30px;
   }
+}
+
+
+/* =====================================
+   IDEAS LAB ORGANIZATION
+===================================== */
+
+.ideas-team-section {
+  background: #eef1e8;
+  padding: 110px 8%;
+  overflow: hidden;
+}
+
+.ideas-team-container {
+  max-width: 1250px;
+  margin: auto;
+}
+
+/* MAIN HEADING */
+
+.ideas-heading {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.ideas-heading .section-eyebrow {
+  justify-content: center;
+}
+
+.ideas-main-heading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  margin-top: 18px;
+}
+
+.ideas-main-heading h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(42px, 5.5vw, 68px);
+  line-height: 1.12;
+  font-weight: 500;
+  color: #193d2d;
+}
+
+.ideas-main-heading h2 em {
+  color: #829e6c;
+}
+
+.ideas-heading-icon {
+  position: absolute;
+  right: 4%;
+  top: 5px;
+  width: 65px;
+  height: 65px;
+  border-radius: 50%;
+  background: #dfe9d6;
+  color: #31543a;
+  display: grid;
+  place-items: center;
+}
+
+/* INTRODUCTION */
+
+.ideas-intro {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+  padding: 30px;
+  background: #fafbf5;
+  border: 1px solid #e0e8d7;
+  border-radius: 22px;
+  box-shadow: 0 12px 35px rgba(28, 56, 35, 0.05);
+  margin-bottom: 65px;
+}
+
+.ideas-intro-icon {
+  width: 125px;
+  height: 125px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  background: #e3ecd7;
+  color: #315b3b;
+}
+
+.ideas-intro-content {
+  border-left: 2px solid #829e6c;
+  padding-left: 28px;
+}
+
+.ideas-intro-content>span {
+  color: #527b42;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1.8px;
+}
+
+.ideas-intro-content h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 25px;
+  color: #193d2d;
+  margin: 5px 0 9px;
+}
+
+.ideas-intro-content p {
+  max-width: 850px;
+  font-size: 13px;
+  line-height: 1.9;
+  color: #687466;
+}
+
+/* MENTOR */
+
+.ideas-mentor-section {
+  max-width: 900px;
+  margin: 0 auto 75px;
+}
+
+.ideas-subheading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  margin-bottom: 22px;
+}
+
+.ideas-subheading span {
+  width: 65px;
+  height: 1px;
+  background: #829e6c;
+}
+
+.ideas-subheading p {
+  color: #31543a;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 2.5px;
+}
+
+.ideas-mentor-card {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 35px;
+  padding: 28px 45px;
+  min-height: 190px;
+  border-radius: 25px;
+  background: #063f29;
+  color: #fff;
+  box-shadow: 0 15px 35px rgba(25, 61, 45, 0.15);
+  overflow: hidden;
+}
+
+.ideas-mentor-avatar {
+  width: 155px;
+  height: 155px;
+  flex-shrink: 0;
+  border: 4px solid #a9cb8d;
+  border-radius: 50%;
+  padding: 4px;
+  background: #e2edce;
+  overflow: hidden;
+}
+
+.ideas-mentor-avatar .female-avatar-svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+  border-radius: 50%;
+}
+
+.ideas-mentor-info {
+  position: relative;
+  z-index: 2;
+}
+
+.ideas-mentor-info h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 32px;
+  font-weight: 500;
+  margin-bottom: 7px;
+}
+
+.ideas-mentor-info>span {
+  display: inline-block;
+  color: #b9d99b;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  margin-bottom: 12px;
+}
+
+.ideas-mentor-info p {
+  max-width: 430px;
+  color: #e1ebdc;
+  font-size: 13px;
+  line-height: 1.8;
+}
+
+.ideas-mentor-decoration {
+  position: absolute;
+  right: 20px;
+  bottom: 12px;
+  color: rgba(169, 203, 141, 0.18);
+}
+
+/* TEAM HEADING */
+
+.ideas-members-heading {
+  text-align: center;
+  margin-bottom: 35px;
+}
+
+.ideas-members-heading>span {
+  color: #527b42;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 2.5px;
+}
+
+.ideas-members-heading h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(38px, 4.5vw, 56px);
+  font-weight: 500;
+  color: #193d2d;
+  margin-top: 7px;
+}
+
+.ideas-members-heading h2 em {
+  color: #829e6c;
+}
+
+/* SMALL MEMBER CARDS */
+
+.ideas-members-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.ideas-member-card {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  min-width: 0;
+  padding: 13px;
+  min-height: 116px;
+  border-radius: 20px;
+  background: #fafbf5;
+  border: 1px solid #dce6d2;
+  box-shadow: 0 6px 18px rgba(28, 56, 35, 0.05);
+  transition:
+    transform 0.35s ease,
+    box-shadow 0.35s ease,
+    border-color 0.35s ease;
+}
+
+.ideas-member-card:hover {
+  transform: translateY(-5px);
+  border-color: #a9c493;
+  box-shadow: 0 13px 25px rgba(28, 56, 35, 0.10);
+}
+
+/* AVATAR */
+
+.ideas-member-avatar {
+  width: 86px;
+  height: 86px;
+  flex-shrink: 0;
+  border: 2px solid #527b42;
+  padding: 3px;
+  border-radius: 50%;
+  background: #e2edce;
+  overflow: hidden;
+}
+
+.female-avatar-svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+  border-radius: 50%;
+}
+
+/* MEMBER DETAILS */
+
+.ideas-member-info {
+  min-width: 0;
+}
+
+.ideas-member-info h3 {
+  font-family: 'Playfair Display', serif;
+  color: #193d2d;
+  font-size: 17px;
+  font-weight: 600;
+  line-height: 1.3;
+  margin-bottom: 5px;
+}
+
+.ideas-member-info p {
+  font-family: 'DM Sans', sans-serif;
+  color: #687466;
+  font-size: 11px;
+  line-height: 1.6;
+}
+
+/* QUOTE */
+
+.ideas-quote {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+  margin-top: 65px;
+  padding-top: 30px;
+  border-top: 1px solid #d5dfca;
+  color: #31543a;
+}
+
+.ideas-quote svg {
+  flex-shrink: 0;
+  color: #658653;
+}
+
+.ideas-quote p {
+  font-family: 'Playfair Display', serif;
+  font-size: 19px;
+  font-style: italic;
+  text-align: center;
+  line-height: 1.6;
+}
+
+/* =====================================
+   RESPONSIVE
+===================================== */
+
+@media (max-width: 1050px) {
+
+  .ideas-members-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .ideas-heading-icon {
+    right: 0;
+  }
+
+}
+
+@media (max-width: 650px) {
+
+  .ideas-team-section {
+    padding: 75px 5%;
+  }
+
+  .ideas-heading {
+    margin-bottom: 30px;
+  }
+
+  .ideas-main-heading {
+    justify-content: flex-start;
+    text-align: left;
+  }
+
+  .ideas-main-heading h2 {
+    font-size: 39px;
+  }
+
+  .ideas-heading-icon {
+    width: 43px;
+    height: 43px;
+    right: 0;
+  }
+
+  .ideas-heading-icon svg {
+    width: 23px;
+  }
+
+  .ideas-intro {
+    padding: 22px 18px;
+    gap: 15px;
+    align-items: flex-start;
+    margin-bottom: 55px;
+  }
+
+  .ideas-intro-icon {
+    width: 48px;
+    height: 48px;
+  }
+
+  .ideas-intro-icon svg {
+    width: 26px;
+  }
+
+  .ideas-intro-content {
+    padding-left: 15px;
+  }
+
+  .ideas-intro-content h3 {
+    font-size: 19px;
+  }
+
+  .ideas-intro-content p {
+    font-size: 11px;
+    line-height: 1.8;
+  }
+
+  .ideas-mentor-section {
+    margin-bottom: 60px;
+  }
+
+  .ideas-mentor-card {
+    flex-direction: column;
+    text-align: center;
+    padding: 28px 20px;
+    gap: 18px;
+  }
+
+  .ideas-mentor-avatar {
+    width: 125px;
+    height: 125px;
+  }
+
+  .ideas-mentor-info h3 {
+    font-size: 25px;
+  }
+
+  .ideas-mentor-info p {
+    font-size: 12px;
+  }
+
+  .ideas-members-heading {
+    margin-bottom: 25px;
+  }
+
+  .ideas-members-heading h2 {
+    font-size: 36px;
+  }
+
+  .ideas-members-grid {
+    grid-template-columns: 1fr;
+    gap: 13px;
+  }
+
+  .ideas-member-card {
+    min-height: 105px;
+    padding: 10px 15px;
+    gap: 18px;
+  }
+
+  .ideas-member-avatar {
+    width: 78px;
+    height: 78px;
+  }
+
+  .ideas-member-info h3 {
+    font-size: 17px;
+  }
+
+  .ideas-member-info p {
+    font-size: 11px;
+  }
+
+  .ideas-quote {
+    margin-top: 45px;
+    gap: 10px;
+  }
+
+  .ideas-quote p {
+    font-size: 15px;
+  }
+
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+  .ideas-member-card {
+    transition: none;
+  }
+
+  .ideas-member-card:hover {
+    transform: none;
+  }
+
+}
+
+.vision-card {
+  will-change: transform;
+}
+
+.vision-card-icon {
+  transform-origin: center;
 }
