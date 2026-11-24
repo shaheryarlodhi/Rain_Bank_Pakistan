@@ -540,7 +540,7 @@
   position: absolute;
   inset: 0;
   z-index: -2;
-  background-image: url('https://images.unsplash.com/photo-1433086966358-54859d0ed716?w=2200&q=90');
+  background-image: url('/images/hero.webp');
   background-size: cover;
   background-position: center;
   transform: scale(1.02);
@@ -549,7 +549,7 @@
 
 @media (max-width: 768px) {
   .hero-background {
-    background-image: url('https://images.unsplash.com/photo-1433086966358-54859d0ed716?w=900&q=75');
+    background-image: url('/images/hero-mobile.webp');
   }
 }
 

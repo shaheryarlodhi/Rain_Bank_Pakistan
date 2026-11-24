@@ -120,7 +120,9 @@ export default function About() {
 
                     <img
                         className="about-image"
-                        src="https://images.unsplash.com/photo-1433086966358-54859d0ed716?w=1000&q=85"
+                        src="/images/waterfall.webp"
+                        width="1000"
+                        height="1500"
                         alt="Natural waterfall surrounded by greenery"
                         loading="lazy"
                         decoding="async"

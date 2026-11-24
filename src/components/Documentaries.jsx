@@ -19,7 +19,7 @@ const videoTopics = [
             'Discover how rainwater can be collected, stored and reused for everyday non-drinking purposes.',
         category: 'RAINWATER HARVESTING',
         search: 'rainwater harvesting educational documentary',
-        image: 'https://images.unsplash.com/photo-1515694346937-94d85e41e6f0?w=900&q=85',
+        image: '/images/img-1515.webp', width: 900, height: 1350,
     },
     {
         number: '02',
@@ -28,7 +28,7 @@ const videoTopics = [
             'Explore why responsible water use and conservation matter for our communities and future.',
         category: 'WATER CONSERVATION',
         search: 'water conservation awareness documentary',
-        image: 'https://images.unsplash.com/photo-1501785888041-af3ef285b470?w=900&q=85',
+        image: '/images/img-1501785.webp', width: 900, height: 600,
     },
     {
         number: '03',
@@ -37,7 +37,7 @@ const videoTopics = [
             'Learn how responsible water use can support gardening, plants and greener surroundings.',
         category: 'SUSTAINABLE LIVING',
         search: 'sustainable gardening water conservation video',
-        image: 'https://images.unsplash.com/photo-1497250681960-ef046c08a56e?w=900&q=85',
+        image: '/images/img-1497.webp', width: 900, height: 1349,
     },
 ];
 
@@ -111,7 +111,7 @@ export default function Documentaries() {
                             key={video.number}
                         >
                             <div className="documentary-image">
-                                <img src={video.image} alt={video.title} loading="lazy" decoding="async" />
+                                <img src={video.image} alt={video.title} width={video.width} height={video.height} loading="lazy" decoding="async" />
 
                                 <div className="documentary-play">
                                     <Play size={22} fill="currentColor" />

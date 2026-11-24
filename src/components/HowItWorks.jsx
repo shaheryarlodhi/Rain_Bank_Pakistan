@@ -95,7 +95,7 @@ export default function HowItWorks() {
             description:
                 'Collect rainwater from rooftops and suitable surfaces through a properly designed collection system.',
             image:
-                'https://images.unsplash.com/photo-1515694346937-94d85e41e6f0?w=800&q=75',
+                '/images/img-1515.webp', width: 900, height: 1350,
         },
         {
             number: '02',
@@ -105,7 +105,7 @@ export default function HowItWorks() {
             description:
                 'Channel collected rainwater into appropriate storage tanks for responsible future utilization.',
             image:
-                'https://images.unsplash.com/photo-1530053969600-caed2596d242?w=800&q=75',
+                '/images/img-1530.webp', width: 800, height: 600,
         },
         {
             number: '03',
@@ -115,7 +115,7 @@ export default function HowItWorks() {
             description:
                 'Use stored rainwater for gardening, plant watering, outdoor washing and other suitable non-drinking purposes.',
             image:
-                'https://images.unsplash.com/photo-1416879595882-3373a0480b5b?w=800&q=75',
+                '/images/garden.webp', width: 1200, height: 800,
         },
     ];
 
@@ -162,6 +162,8 @@ export default function HowItWorks() {
                                 <img
                                     src={step.image}
                                     alt={step.subtitle}
+                                    width={step.width}
+                                    height={step.height}
                                     loading="lazy"
                                     decoding="async"
                                 />

@@ -50,7 +50,9 @@ export default function OurWork() {
                 <div className="work-image-wrapper">
                     <img
                         className="work-image"
-                        src="https://images.unsplash.com/photo-1416879595882-3373a0480b5b?w=1200&q=90"
+                        src="/images/garden.webp"
+                        width="1200"
+                        height="800"
                         alt="Green vegetable garden with thriving plants"
                         loading="lazy"
                         decoding="async"

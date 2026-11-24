@@ -1,4 +1,3 @@
-import logo from '../assets/images/Rain Bank Pakistan Logo.png'
 import { useState } from 'react';
 import { Droplets, Menu, X, ArrowUpRight } from 'lucide-react';
 

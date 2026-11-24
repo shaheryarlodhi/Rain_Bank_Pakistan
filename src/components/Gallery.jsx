@@ -8,31 +8,31 @@ gsap.registerPlugin(ScrollTrigger);
 
 const galleryItems = [
     {
-        image: 'https://images.unsplash.com/photo-1433086966358-54859d0ed716?w=1000&q=85',
+        image: '/images/waterfall.webp', width: 1000, height: 1500,
         title: 'The Beauty of Water',
         category: 'NATURE & WATER',
         size: 'large',
     },
     {
-        image: 'https://images.unsplash.com/photo-1416879595882-3373a0480b5b?w=800&q=85',
+        image: '/images/garden.webp', width: 1200, height: 800,
         title: 'Growing a Greener Future',
         category: 'GARDENING',
         size: 'small',
     },
     {
-        image: 'https://images.unsplash.com/photo-1518837695005-2083093ee35b?w=800&q=85',
+        image: '/images/img-1518.webp', width: 800, height: 533,
         title: 'Every Drop Matters',
         category: 'WATER CONSERVATION',
         size: 'small',
     },
     {
-        image: 'https://images.unsplash.com/photo-1530053969600-caed2596d242?w=800&q=85',
+        image: '/images/img-1530.webp', width: 800, height: 600,
         title: 'Responsible Water Use',
         category: 'SUSTAINABILITY',
         size: 'small',
     },
     {
-        image: 'https://images.unsplash.com/photo-1501004318641-b39e6451bec6?w=1000&q=85',
+        image: '/images/img-1501004.webp', width: 1000, height: 751,
         title: 'Nature in Every Corner',
         category: 'GREEN LIVING',
         size: 'large',
@@ -95,15 +95,15 @@ export default function Gallery() {
                 </div>
 
                 <div className="gallery-grid">
-                    {galleryItems.map((item, index) => (
+                    {galleryItems.map((item) => (
                         <a
                             href={item.image}
                             target="_blank"
                             rel="noreferrer"
                             className={`gallery-item gallery-${item.size}`}
-                            key={index}
+                            key={item.title}
                         >
-                            <img src={item.image} alt={item.title} loading="lazy" decoding="async" />
+                            <img src={item.image} alt={item.title} width={item.width} height={item.height} loading="lazy" decoding="async" />
 
                             <div className="gallery-overlay">
                                 <span>{item.category}</span>

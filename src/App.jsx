@@ -1,19 +1,33 @@
+import { lazy, Suspense, useEffect } from 'react';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
-import About from './components/About';
-import Vision from './components/Vision';
-import Mission from './components/Mission';
-import HowItWorks from './components/HowItWorks';
-import OurWork from './components/OurWork';
-import Gallery from './components/Gallery';
-import Documentaries from './components/Documentaries';
-import Team from './components/Team';
-import Contact from './components/Contact';
-import Footer from './components/Footer';
 import SmoothScroll from './components/SmoothScroll';
 
 import './App.css';
+
+// Everything below the hero is loaded in separate chunks.
+const About = lazy(() => import('./components/About'));
+const Vision = lazy(() => import('./components/Vision'));
+const Mission = lazy(() => import('./components/Mission'));
+const HowItWorks = lazy(() => import('./components/HowItWorks'));
+const OurWork = lazy(() => import('./components/OurWork'));
+const Gallery = lazy(() => import('./components/Gallery'));
+const Documentaries = lazy(() => import('./components/Documentaries'));
+const Team = lazy(() => import('./components/Team'));
+const Contact = lazy(() => import('./components/Contact'));
+const Footer = lazy(() => import('./components/Footer'));
+
+// Mounts only after every lazy section has loaded, then re-measures scroll triggers.
+function SectionsReady() {
+  useEffect(() => {
+    const id = requestAnimationFrame(() => ScrollTrigger.refresh());
+    return () => cancelAnimationFrame(id);
+  }, []);
+
+  return null;
+}
 
 function App() {
   return (
@@ -22,18 +36,24 @@ function App() {
 
       <main>
         <Hero />
-        <About />
-        <Vision />
-        <Mission />
-        <HowItWorks />
-        <OurWork />
-        <Gallery />
-        <Documentaries />
-        <Team />
-        <Contact />
+
+        <Suspense fallback={<div style={{ minHeight: '100vh' }} aria-hidden="true" />}>
+          <About />
+          <Vision />
+          <Mission />
+          <HowItWorks />
+          <OurWork />
+          <Gallery />
+          <Documentaries />
+          <Team />
+          <Contact />
+          <SectionsReady />
+        </Suspense>
       </main>
 
-      <Footer />
+      <Suspense fallback={null}>
+        <Footer />
+      </Suspense>
     </SmoothScroll>
   );
 }
