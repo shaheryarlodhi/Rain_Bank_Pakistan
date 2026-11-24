@@ -52,6 +52,8 @@ export default function OurWork() {
                         className="work-image"
                         src="https://images.unsplash.com/photo-1416879595882-3373a0480b5b?w=1200&q=90"
                         alt="Green vegetable garden with thriving plants"
+                        loading="lazy"
+                        decoding="async"
                     />
 
                     <div className="work-image-overlay">

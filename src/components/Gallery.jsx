@@ -103,7 +103,7 @@ export default function Gallery() {
                             className={`gallery-item gallery-${item.size}`}
                             key={index}
                         >
-                            <img src={item.image} alt={item.title} />
+                            <img src={item.image} alt={item.title} loading="lazy" decoding="async" />
 
                             <div className="gallery-overlay">
                                 <span>{item.category}</span>

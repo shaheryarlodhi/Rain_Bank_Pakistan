@@ -111,7 +111,7 @@ export default function Documentaries() {
                             key={video.number}
                         >
                             <div className="documentary-image">
-                                <img src={video.image} alt={video.title} />
+                                <img src={video.image} alt={video.title} loading="lazy" decoding="async" />
 
                                 <div className="documentary-play">
                                     <Play size={22} fill="currentColor" />

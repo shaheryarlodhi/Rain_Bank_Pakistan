@@ -547,6 +547,12 @@
   will-change: transform;
 }
 
+@media (max-width: 768px) {
+  .hero-background {
+    background-image: url('https://images.unsplash.com/photo-1433086966358-54859d0ed716?w=900&q=75');
+  }
+}
+
 .hero-overlay {
   position: absolute;
   inset: 0;
